@@ -23,4 +23,4 @@ class Test_Config(unittest.TestCase):
 
     def test_get_faculty_rating_5(self):
         self.assertEqual(get_faculty_rating(0.45), 'Unacceptable')
-    
+
