@@ -1,32 +1,35 @@
 #
-from dictionary import Inventory
+from sets import get_students_who_took_prog1_and_prog2, get_students_who_took_prog1_not_prog2,get_students_who_took_prog2_not_prog1
 
-def main():
-    inventory = Inventory()
-
+def main_menu():
     while True:
-        # Print the menu
         print("\nInventory Menu\n")
-        print("1-Add or Update Item")
-        print("2-Delete Item")
-        print("3-Exit")
+        print("1-Students who took prog1 and prog2")
+        print("2-Students who took prog2 only")
+        print("3-Students who took prog1 not prog2")
+        print("4-Students who took prog2 not prog1")
+        print("5-Exit\n")
         
-        # Get user's choice
-        choice = input("Enter your choice: ").strip()
+        choice = input("Please select an option (1-5): ")
         
-        # Handle the user's choice
-        if choice == '1':
-            item = input("Enter the item name: ")
-            quantity = int(input("Enter the quantity: "))
-            inventory.add_inventory(item, quantity)
-        elif choice == '2':
-            item = input("Enter the item name to delete: ")
-            inventory.remove_inventory_widget(item)
-        elif choice == '3':
-            print("Exiting the inventory system.")
-            break  # Exit the loop, thus ending the program
+        if choice == "1":
+            print(f"Students who took both prog1 and prog2: {get_students_who_took_prog1_and_prog2(prog1, prog2)}")
+        elif choice == "2":
+            print(f"Students who took prog2 only (not prog1): {get_students_who_took_prog2_not_prog1(prog1, prog2)}")
+        elif choice == "3":
+            print(f"Students who took prog1 and not prog2: {get_students_who_took_prog1_not_prog2(prog1, prog2)}")
+        elif choice == "4":
+            print(f"Students who took prog2 and not prog1: {get_students_who_took_prog2_not_prog1(prog1, prog2)}")
+        elif choice == "5":
+            print("Exiting the program. Goodbye!")
+            break
         else:
-            print("Invalid choice. Please choose 1, 2, or 3.")
+            print("Invalid option, please try again.")
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    # Define the program sets
+    prog1 = {'Student1', 'Student2', 'Student3'}
+    prog2 = {'Student3', 'Student4', 'Student5'}
+    
+    # Run the main menu
+    main_menu()
